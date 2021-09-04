@@ -8,35 +8,54 @@ use App\Entity\Electronic\Item\Console;
 use App\Entity\Electronic\Item\Controller;
 use App\Entity\Electronic\Item\Microwave;
 use App\Entity\Electronic\Item\Television;
+use App\Exception\TooMuchExtrasException;
 
 /**
  * Create console for purchase
  */
 $console = new Console(800.0);
-$console->setExtras(new ElectronicItems(
-    new Controller(10),
-    new Controller(10),
-    new Controller(5, true),
-    new Controller(5, true)
-));
+try {
+    $console->setExtras(new ElectronicItems(
+        new Controller(10),
+        new Controller(10),
+        new Controller(5, true),
+        new Controller(5, true)
+    ));
+} catch (TooMuchExtrasException $e) {
+    // TODO: implement logging
+    echo $e->getMessage() . "\n";
+    exit;
+}
 
 /**
  * Create television 1 for purchase
  */
 $tvFirst = new Television(400.0);
-$tvFirst->setExtras(new ElectronicItems(
-        new Controller(7),
-        new Controller(7),
-    )
-);
+try {
+    $tvFirst->setExtras(new ElectronicItems(
+            new Controller(7),
+            new Controller(7),
+        )
+    );
+} catch (TooMuchExtrasException $e) {
+    // TODO: implement logging
+    echo $e->getMessage() . "\n";
+    exit;
+}
 
 /**
  * Create television 2 for purchase
  */
 $tvSecond = new Television(500.0);
-$tvSecond->addExtra(
-    new Controller(7)
-);
+try {
+    $tvSecond->addExtra(
+        new Controller(7)
+    );
+} catch (TooMuchExtrasException $e) {
+    // TODO: implement logging
+    echo $e->getMessage() . "\n";
+    exit;
+}
 
 /**
  * Create microwave for purchase

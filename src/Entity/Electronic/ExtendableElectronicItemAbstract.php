@@ -46,7 +46,7 @@ abstract class ExtendableElectronicItemAbstract extends ElectronicItemsAbstract 
          */
         if (null !== static::MAX_EXTRAS && $items->count() > static::MAX_EXTRAS) {
             throw new TooMuchExtrasException(
-                'The max extras count for television should be less then' . self::MAX_EXTRAS
+                'The max extras count for television should be less then ' . static::MAX_EXTRAS
             );
         }
         $this->extras = $items;
@@ -64,7 +64,7 @@ abstract class ExtendableElectronicItemAbstract extends ElectronicItemsAbstract 
          */
         if (null !== static::MAX_EXTRAS && $this->extras->count() >= static::MAX_EXTRAS) {
             throw new TooMuchExtrasException(
-                'The max extras count for television should be less then' . self::MAX_EXTRAS
+                'The max extras count for television should be less then ' . static::MAX_EXTRAS
             );
         }
 
