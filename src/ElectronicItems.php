@@ -42,10 +42,6 @@ class ElectronicItems implements IteratorAggregate, Countable
         return $totalPrice;
     }
 
-    /**
-     * @param string $type
-     * @return ElectronicItems
-     */
     public function getItemsByType(string $type): ElectronicItems
     {
         $items = array_filter($this->items, static function ($item) use ($type) {

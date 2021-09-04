@@ -5,8 +5,7 @@ namespace App\Entity\Electronic;
 abstract class ElectronicItemsAbstract implements ElectronicItemInterface
 {
     protected const MAX_EXTRAS = null;
-
-    protected const TYPE = null; // ????
+    protected const TYPE = null;
 
     protected float $price;
 

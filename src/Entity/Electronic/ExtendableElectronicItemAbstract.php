@@ -16,8 +16,8 @@ abstract class ExtendableElectronicItemAbstract extends ElectronicItemsAbstract 
             $this->extras = new ElectronicItems();
             return;
         }
-        $this->extras = $extras;
 
+        $this->extras = $extras;
     }
 
     public function getExtras(): ElectronicItems
@@ -27,14 +27,16 @@ abstract class ExtendableElectronicItemAbstract extends ElectronicItemsAbstract 
 
     public function getTotalPrice(): float
     {
-        /*if (null === $this->extras) {
-            return $this->getPrice();
-        }*/
-
         return $this->getPrice() + $this->getExtras()->getTotalPrice();
     }
 
     /**
+     * Here I had a two ways and I choose the most simple and more universal.
+     * The second way is to create collection for controllers and put only controllers collection here.
+     *
+     * @param ElectronicItems $items
+     *
+     * @return void
      * @throws TooMuchExtrasException
      */
     public function setExtras(ElectronicItems $items): void
@@ -53,6 +55,13 @@ abstract class ExtendableElectronicItemAbstract extends ElectronicItemsAbstract 
     }
 
     /**
+     * Here I had a two ways and I choose the most simple and more universal.
+     * The second way is to put only ControllerInterface as a parameter.
+     * I didn't do it because of the comment for setExtras() method.
+     *
+     * @param ElectronicItemInterface $item
+     *
+     * @return void
      * @throws TooMuchExtrasException
      */
     public function addExtra(ElectronicItemInterface $item): void
